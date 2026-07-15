@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repair Guide — TECHNO MYO THANT</title>
+  <meta name="description"
+    content="TV and monitor repair tips, troubleshooting articles and DIY guides from TECHNO MYO THANT." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: { DEFAULT: "#800000", light: "#A62828", dark: "#5C0000" },
+            gold: { DEFAULT: "#CFB53B", light: "#E0CB5E", dark: "#A8912A" },
+            metal: { DEFAULT: "#1A1A1D", light: "#242428", 700: "#2E2E33", dark: "#141416" },
+          },
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- my css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-metal text-gray-200">
+
+  <!-- navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-metal-dark/95 backdrop-blur border-b border-metal-700">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-gold text-metal font-black flex items-center justify-center">T</span>
+        <span class="font-extrabold text-white text-lg">TECHNO <span class="text-gold">MYO THANT</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-all duration-300">Home</a></li>
+        <li><a href="service.html" class="text-gray-300 hover:text-gold transition-all duration-300">Services</a></li>
+        <li><a href="sale-items.html" class="text-gray-300 hover:text-gold transition-all duration-300">Sale Items</a>
+        </li>
+        <li><a href="repair-guide.html" class="text-gold">Repair Guide</a></li>
+        <li id="navActions" class="flex items-center gap-4"></li>
+      </ul>
+      <button id="hamburger" class="md:hidden w-10 h-10 flex items-center justify-center text-white"
+        aria-label="Toggle menu" aria-expanded="false">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-metal-dark border-t border-metal-700 px-4 py-3 space-y-1">
+      <a href="index.html" class="block py-2 text-gray-300 hover:text-gold">Home</a>
+      <a href="service.html" class="block py-2 text-gray-300 hover:text-gold">Services</a>
+      <a href="sale-items.html" class="block py-2 text-gray-300 hover:text-gold">Sale Items</a>
+      <a href="repair-guide.html" class="block py-2 text-gold font-semibold">Repair Guide</a>
+      <div id="navActionsMobile"></div>
+    </div>
+  </header>
+
+  <!-- page header -->
+  <section class="pt-28 pb-10 px-4 text-center bg-gradient-to-br from-metal to-maroon-dark">
+    <p class="text-gold font-semibold uppercase text-sm mb-2">Tips & Troubleshooting</p>
+    <h1 class="text-4xl font-extrabold text-white">Repair Guide</h1>
+    <p class="text-gray-300 mt-3 max-w-2xl mx-auto">Simple articles and DIY tips from our technicians. Try these first —
+      if it still needs a pro, we're one click away.</p>
+  </section>
+
+  <!-- articles -->
+  <section class="py-14 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- article 1 -->
+      <article
+        class="bg-metal-light border border-metal-700 rounded-2xl overflow-hidden hover:border-gold transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=600&q=80"
+          alt="TV showing no picture" class="w-full h-44 object-cover" />
+        <div class="p-5">
+          <span class="text-xs text-gold font-semibold uppercase">TV Basics</span>
+          <h2 class="text-white font-bold mt-1">TV Turns On But No Picture? 5 Checks</h2>
+          <p class="text-sm text-gray-400 mt-2">Before you panic, check the input source, cables, backlight and standby
+            light. Here's the quick order to test them.</p>
+          <ul class="mt-3 text-sm text-gray-300 list-disc list-inside space-y-1">
+            <li>Cycle the input/source button</li>
+            <li>Re-seat the HDMI and power cables</li>
+            <li>Shine a torch on the screen (backlight test)</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- article 2 -->
+      <article
+        class="bg-metal-light border border-metal-700 rounded-2xl overflow-hidden hover:border-gold transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1601944177325-f8867652837f?auto=format&fit=crop&w=600&q=80"
+          alt="Smart TV apps" class="w-full h-44 object-cover" />
+        <div class="p-5">
+          <span class="text-xs text-gold font-semibold uppercase">Smart / Android TV</span>
+          <h2 class="text-white font-bold mt-1">Apps Freezing or Wi-Fi Dropping?</h2>
+          <p class="text-sm text-gray-400 mt-2">Most smart-TV glitches are fixed by a proper restart and a cache clear,
+            not a repair.</p>
+          <ul class="mt-3 text-sm text-gray-300 list-disc list-inside space-y-1">
+            <li>Unplug the TV for 60 seconds (cold reboot)</li>
+            <li>Forget and rejoin your Wi-Fi network</li>
+            <li>Clear the app's cache in Settings</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- article 3 -->
+      <article
+        class="bg-metal-light border border-metal-700 rounded-2xl overflow-hidden hover:border-gold transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80"
+          alt="Desktop monitor" class="w-full h-44 object-cover" />
+        <div class="p-5">
+          <span class="text-xs text-gold font-semibold uppercase">Monitors</span>
+          <h2 class="text-white font-bold mt-1">Monitor Says "No Signal"</h2>
+          <p class="text-sm text-gray-400 mt-2">Nine times out of ten this is a cable or input issue, not a dead panel.
+          </p>
+          <ul class="mt-3 text-sm text-gray-300 list-disc list-inside space-y-1">
+            <li>Swap the HDMI/DisplayPort cable</li>
+            <li>Match the monitor input to the port used</li>
+            <li>Test the monitor on another computer</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- article 4 -->
+      <article
+        class="bg-metal-light border border-metal-700 rounded-2xl overflow-hidden hover:border-gold transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1552975084-6e027cd345c2?auto=format&fit=crop&w=600&q=80"
+          alt="TV screen lines" class="w-full h-44 object-cover" />
+        <div class="p-5">
+          <span class="text-xs text-gold font-semibold uppercase">Screen Faults</span>
+          <h2 class="text-white font-bold mt-1">Lines or Flicker on the Screen</h2>
+          <p class="text-sm text-gray-400 mt-2">Vertical lines usually point to a panel or T-CON board issue — this one
+            is best left to a technician.</p>
+          <ul class="mt-3 text-sm text-gray-300 list-disc list-inside space-y-1">
+            <li>Note if lines change when you tap the frame</li>
+            <li>Take a photo of the pattern for us</li>
+            <li>Avoid pressing on the panel</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- article 5 -->
+      <article
+        class="bg-metal-light border border-metal-700 rounded-2xl overflow-hidden hover:border-gold transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80"
+          alt="Home electronics" class="w-full h-44 object-cover" />
+        <div class="p-5">
+          <span class="text-xs text-gold font-semibold uppercase">Care & Maintenance</span>
+          <h2 class="text-white font-bold mt-1">5 Habits That Make a TV Last Longer</h2>
+          <p class="text-sm text-gray-400 mt-2">Small routines that prevent big, expensive repairs down the line.</p>
+          <ul class="mt-3 text-sm text-gray-300 list-disc list-inside space-y-1">
+            <li>Use a surge protector</li>
+            <li>Keep vents dust-free and ventilated</li>
+            <li>Lower brightness to reduce heat</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- article 6 -->
+      <article
+        class="bg-metal-light border border-metal-700 rounded-2xl overflow-hidden hover:border-gold transition-all duration-300">
+        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80"
+          alt="Remote control" class="w-full h-44 object-cover" />
+        <div class="p-5">
+          <span class="text-xs text-gold font-semibold uppercase">Quick Fixes</span>
+          <h2 class="text-white font-bold mt-1">Remote Not Working?</h2>
+          <p class="text-sm text-gray-400 mt-2">A dead remote is rarely the TV. Rule out the easy stuff in two minutes.
+          </p>
+          <ul class="mt-3 text-sm text-gray-300 list-disc list-inside space-y-1">
+            <li>Replace the batteries (check polarity)</li>
+            <li>Check the IR light with a phone camera</li>
+            <li>Clean the button contacts</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- cta -> booking -->
+    <div class="max-w-6xl mx-auto mt-12 text-center bg-metal-light border border-metal-700 rounded-2xl p-8">
+      <h2 class="text-2xl font-bold text-white">Still not fixed?</h2>
+      <p class="text-gray-400 mt-2">Book a repair and get a live cost estimate in a few clicks.</p>
+      <a href="repair-steps.html"
+        class="inline-block mt-5 bg-gold text-metal font-bold px-6 py-3 rounded-md hover:bg-gold-light transition-all duration-300">Book
+        a Repair</a>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="bg-metal-dark border-t border-metal-700 py-10 px-4 text-center">
+    <p class="text-gray-400 text-sm">📍 No. 12, Tech Street, Yangon &nbsp;|&nbsp; 📞 +95 9 123 456 789</p>
+    <p class="text-gray-500 text-sm mt-3">© 2026 TECHNO MYO THANT. All rights reserved.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+
+</html>

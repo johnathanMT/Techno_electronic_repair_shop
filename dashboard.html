@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard — TECHNO MYO THANT</title>
+  <meta name="description" content="Customer dashboard: profile, purchase history and repair tracking." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: { DEFAULT: "#800000", light: "#A62828", dark: "#5C0000" },
+            gold: { DEFAULT: "#CFB53B", light: "#E0CB5E", dark: "#A8912A" },
+            metal: { DEFAULT: "#1A1A1D", light: "#242428", 700: "#2E2E33", dark: "#141416" },
+          },
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- my css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-metal text-gray-200">
+
+  <!-- navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-metal-dark/95 backdrop-blur border-b border-metal-700">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-gold text-metal font-black flex items-center justify-center">T</span>
+        <span class="font-extrabold text-white text-lg">TECHNO <span class="text-gold">MYO THANT</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-all duration-300">Home</a></li>
+        <li><a href="service.html" class="text-gray-300 hover:text-gold transition-all duration-300">Services</a></li>
+        <li><a href="sale-items.html" class="text-gray-300 hover:text-gold transition-all duration-300">Sale Items</a>
+        </li>
+        <li><a href="repair-guide.html" class="text-gray-300 hover:text-gold transition-all duration-300">Repair
+            Guide</a></li>
+        <li id="navActions" class="flex items-center gap-4"></li>
+      </ul>
+      <button id="hamburger" class="md:hidden w-10 h-10 flex items-center justify-center text-white"
+        aria-label="Toggle menu" aria-expanded="false">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-metal-dark border-t border-metal-700 px-4 py-3 space-y-1">
+      <a href="index.html" class="block py-2 text-gray-300 hover:text-gold">Home</a>
+      <a href="service.html" class="block py-2 text-gray-300 hover:text-gold">Services</a>
+      <a href="sale-items.html" class="block py-2 text-gray-300 hover:text-gold">Sale Items</a>
+      <a href="repair-guide.html" class="block py-2 text-gray-300 hover:text-gold">Repair Guide</a>
+      <div id="navActionsMobile"></div>
+    </div>
+  </header>
+
+  <!-- dashboard (js sends to login if not signed in) -->
+  <main id="dashboardPage" class="pt-24 pb-16 px-4">
+    <div class="max-w-5xl mx-auto">
+
+      <h1 class="text-3xl font-extrabold text-white mb-6">My Dashboard</h1>
+
+      <!-- profile -->
+      <section
+        class="bg-metal-light border border-metal-700 rounded-2xl p-6 flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+        <div class="w-16 h-16 rounded-full bg-gold text-metal font-black text-2xl flex items-center justify-center">T
+        </div>
+        <div class="flex-1">
+          <h2 id="dashName" class="text-xl font-bold text-white">Customer</h2>
+          <p id="dashEmail" class="text-gray-400 text-sm">—</p>
+        </div>
+        <div class="text-left sm:text-right">
+          <p class="text-xs text-gray-400 uppercase">Customer ID</p>
+          <p id="dashId" class="text-gold font-black text-lg">CUST-0000</p>
+        </div>
+      </section>
+
+      <!-- tabs -->
+      <div class="flex gap-2 mb-6">
+        <button data-panel="repairs"
+          class="dash-tab bg-gold text-metal font-bold px-5 py-2 rounded-full transition-all duration-300">Repair
+          Tracking</button>
+        <button data-panel="history"
+          class="dash-tab bg-metal-light text-gray-300 font-bold px-5 py-2 rounded-full transition-all duration-300">Purchase
+          History</button>
+      </div>
+
+      <!-- repair tracking tab -->
+      <section data-panel="repairs" class="dash-panel">
+        <div class="mb-4">
+          <label for="repairSearch" class="block text-sm font-semibold text-gray-300 mb-1">Track a device by ID</label>
+          <input id="repairSearch" type="text" placeholder="e.g. #TV-Sony-49in-8821"
+            class="w-full sm:w-96 px-4 py-3 rounded-md bg-metal border border-metal-700 text-white focus:border-gold outline-none" />
+        </div>
+        <div id="repairList" class="grid gap-4 sm:grid-cols-2"></div>
+      </section>
+
+      <!-- purchase history tab -->
+      <section data-panel="history" class="dash-panel hidden">
+        <div id="historyList" class="grid gap-4 sm:grid-cols-2"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="bg-metal-dark border-t border-metal-700 py-8 px-4 text-center">
+    <p class="text-gray-500 text-sm">© 2026 TECHNO MYO THANT. All rights reserved.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
