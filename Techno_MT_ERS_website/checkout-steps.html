@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — TECHNO MYO THANT</title>
+  <meta name="description" content="Review your cart, add delivery details and place your order. Prices in MMK." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            maroon: { DEFAULT: "#800000", light: "#A62828", dark: "#5C0000" },
+            gold: { DEFAULT: "#CFB53B", light: "#E0CB5E", dark: "#A8912A" },
+            metal: { DEFAULT: "#1A1A1D", light: "#242428", 700: "#2E2E33", dark: "#141416" },
+          },
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"] },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <!-- my css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-metal text-gray-200">
+
+  <!-- navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-metal-dark/95 backdrop-blur border-b border-metal-700">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="index.html" class="flex items-center gap-2">
+        <span class="w-9 h-9 rounded-lg bg-gold text-metal font-black flex items-center justify-center">T</span>
+        <span class="font-extrabold text-white text-lg">TECHNO <span class="text-gold">MYO THANT</span></span>
+      </a>
+      <ul class="hidden md:flex items-center gap-6 text-sm font-semibold">
+        <li><a href="index.html" class="text-gray-300 hover:text-gold transition-all duration-300">Home</a></li>
+        <li><a href="service.html" class="text-gray-300 hover:text-gold transition-all duration-300">Services</a></li>
+        <li><a href="sale-items.html" class="text-gray-300 hover:text-gold transition-all duration-300">Sale Items</a>
+        </li>
+        <li><a href="repair-guide.html" class="text-gray-300 hover:text-gold transition-all duration-300">Repair
+            Guide</a></li>
+        <li id="navActions" class="flex items-center gap-4"></li>
+      </ul>
+      <button id="hamburger" class="md:hidden w-10 h-10 flex items-center justify-center text-white"
+        aria-label="Toggle menu" aria-expanded="false">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden md:hidden bg-metal-dark border-t border-metal-700 px-4 py-3 space-y-1">
+      <a href="index.html" class="block py-2 text-gray-300 hover:text-gold">Home</a>
+      <a href="service.html" class="block py-2 text-gray-300 hover:text-gold">Services</a>
+      <a href="sale-items.html" class="block py-2 text-gray-300 hover:text-gold">Sale Items</a>
+      <a href="repair-guide.html" class="block py-2 text-gray-300 hover:text-gold">Repair Guide</a>
+      <div id="navActionsMobile"></div>
+    </div>
+  </header>
+
+  <main class="pt-24 pb-16 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-extrabold text-white mb-6">Checkout</h1>
+
+      <!-- cart view -->
+      <div id="checkoutMain" class="grid lg:grid-cols-2 gap-8">
+
+        <!-- left: cart + totals -->
+        <div class="bg-metal-light border border-metal-700 rounded-2xl p-6">
+          <h2 class="text-lg font-bold text-white mb-3">Order Summary</h2>
+
+          <!-- cart items from js -->
+          <div id="checkoutItems"></div>
+
+          <!-- empty cart msg -->
+          <p id="emptyCart" class="hidden text-gray-500 text-center py-8">
+            Your cart is empty. <a href="sale-items.html" class="text-gold font-semibold">Go shopping →</a>
+          </p>
+
+          <!-- totals -->
+          <div class="mt-4 space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">Subtotal</span><span id="coSubtotal"
+                class="text-white font-semibold">0 MMK</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Commercial Tax (5%)</span><span id="coTax"
+                class="text-white font-semibold">0 MMK</span></div>
+            <div class="flex justify-between pt-2 border-t border-metal-700"><span class="font-bold text-white">Final
+                Total</span><span id="coTotal" class="text-lg font-black text-gold">0 MMK</span></div>
+          </div>
+        </div>
+
+        <!-- right: delivery form -->
+        <div class="bg-metal-light border border-metal-700 rounded-2xl p-6">
+          <h2 class="text-lg font-bold text-white mb-3">Delivery Details</h2>
+          <form id="deliveryForm" class="space-y-4">
+            <div>
+              <label for="deliveryName" class="block text-sm font-semibold text-gray-300 mb-1">Full Name</label>
+              <input id="deliveryName" type="text" required placeholder="Your name"
+                class="w-full px-4 py-3 rounded-md bg-metal border border-metal-700 text-white focus:border-gold outline-none" />
+            </div>
+            <div>
+              <label for="deliveryPhone" class="block text-sm font-semibold text-gray-300 mb-1">Phone Number</label>
+              <input id="deliveryPhone" type="tel" required placeholder="+95 9 ..."
+                class="w-full px-4 py-3 rounded-md bg-metal border border-metal-700 text-white focus:border-gold outline-none" />
+            </div>
+            <div>
+              <label for="deliveryAddress" class="block text-sm font-semibold text-gray-300 mb-1">Full Delivery
+                Address</label>
+              <textarea id="deliveryAddress" rows="3" required placeholder="House no., street, township, city…"
+                class="w-full px-4 py-3 rounded-md bg-metal border border-metal-700 text-white focus:border-gold outline-none"></textarea>
+            </div>
+            <button type="submit"
+              class="w-full bg-gold text-metal font-bold py-3 rounded-md hover:bg-gold-light transition-all duration-300">Place
+              Order</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- success msg after order -->
+      <div id="orderSuccess"
+        class="hidden text-center bg-metal-light border border-gold rounded-2xl p-10 max-w-lg mx-auto">
+        <div class="w-16 h-16 mx-auto rounded-full bg-gold flex items-center justify-center mb-4">
+          <svg class="w-8 h-8 text-metal" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 class="text-2xl font-extrabold text-white">Order Placed Successfully!</h2>
+        <p class="mt-3 text-gray-300">Thank you for your purchase. We will contact you shortly to arrange delivery.</p>
+        <div class="mt-6 flex flex-wrap gap-3 justify-center">
+          <a href="dashboard.html"
+            class="bg-gold text-metal font-bold px-6 py-3 rounded-md hover:bg-gold-light transition-all duration-300">View
+            in Dashboard</a>
+          <a href="sale-items.html"
+            class="border border-metal-700 text-gray-200 font-bold px-6 py-3 rounded-md hover:border-gold hover:text-gold transition-all duration-300">Continue
+            Shopping</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-metal-dark border-t border-metal-700 py-8 px-4 text-center">
+    <p class="text-gray-500 text-sm">© 2026 TECHNO MYO THANT. All rights reserved.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
